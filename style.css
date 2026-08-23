@@ -10,17 +10,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Caveat:wght@600&display=swap');
 
 :root{
-  /* Paleta */
-  --pizarron: #1F3D33;       /* verde pizarrón profundo */
-  --pizarron-2: #16302A;     /* variante más oscura para profundidad */
-  --papel: #FAF9F3;          /* papel — blanco cálido, no crema */
-  --papel-linea: #E4E2D6;    /* línea de cuaderno sobre el papel */
-  --tinta: #1C2B24;          /* texto principal */
-  --tinta-suave: #4B5A52;    /* texto secundario */
-  --rojo-correccion: #C24429;/* rojo de corrección del profe */
-  --amarillo-marcador: #E7B32B; /* resaltador */
-  --lila-lirio: #9C7FB5;     /* acento floral — lilium */
-  --tiza: #F4F2EA;
+  /* Paleta — inspirada en los colores del lirio (lilium):
+     lavanda de los pétalos, rosa empolvado, durazno del centro
+     de la flor y verde salvia del tallo. */
+  --pizarron: #7A6693;       /* lavanda oscuro — reemplaza el verde pizarrón */
+  --pizarron-2: #6A5983;     /* variante más oscura para profundidad */
+  --papel: #FBF6F8;          /* blanco cálido con un dejo rosado */
+  --papel-linea: #ECDFE8;    /* línea de cuaderno — lavanda-rosa muy suave */
+  --tinta: #4A3C57;          /* texto principal — ciruela oscuro */
+  --tinta-suave: #7A6C87;    /* texto secundario */
+  --rojo-correccion: #C1608A;/* rosa frambuesa — antes rojo de corrección */
+  --amarillo-marcador: #E8BE6C; /* dorado suave — polen del lirio */
+  --lila-lirio: #C9AEE0;     /* lavanda claro — acento del logo */
+  --tiza: #FBF2F8;
 
   --fuente-display: 'Fraunces', serif;
   --fuente-texto: 'Work Sans', sans-serif;
@@ -28,7 +30,7 @@
   --fuente-manuscrita: 'Caveat', cursive;
 
   --radio: 6px;
-  --sombra: 0 10px 30px rgba(22, 48, 42, 0.12);
+  --sombra: 0 10px 30px rgba(122, 102, 147, 0.16);
 }
 
 *{ box-sizing: border-box; }
@@ -151,7 +153,7 @@ a{ color: inherit; }
 
 .nav-links a.activo{
   color: var(--pizarron);
-  background: #E7EDE6;
+  background: #F1E7F3;
 }
 
 .nav-toggle{
