@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Horarios y precios — English With Us</title>
+<title>Horarios y precios — Profesores_at.lilium</title>
 <meta name="description" content="Horarios disponibles para clases particulares de inglés y precios de cada pack de clases.">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -12,15 +12,25 @@
 <header class="encabezado">
   <nav class="nav contenedor">
     <a href="index.html" class="marca">
-      <div class="logo-hueco editar">LOGO<br>AQUÍ</div>
-      <div class="marca-nombre">English With Us<span>Profesores de inglés</span></div>
+      <div class="logo-hueco" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 44 L24 28"/>
+          <path d="M24 38 C20 38 17 35 16 32"/>
+          <path d="M24 28 C24 20 20 12 24 4 C28 12 24 20 24 28 Z"/>
+          <path d="M24 28 C30 22 38 18 44 20 C38 24 30 26 24 28 Z"/>
+          <path d="M24 28 C18 22 10 18 4 20 C10 24 18 26 24 28 Z"/>
+          <path d="M24 28 C29 21 34 13 32 6 C27 11 25 20 24 28 Z"/>
+          <path d="M24 28 C19 21 14 13 16 6 C21 11 23 20 24 28 Z"/>
+          <circle cx="24" cy="27" r="1.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <div class="marca-nombre">
+        <span data-bind="sitio.nombre"></span>
+        <span data-bind="sitio.tagline"></span>
+      </div>
     </a>
     <button class="nav-toggle" aria-label="Abrir menú"><span></span></button>
-    <ul class="nav-links">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="horarios.html" class="activo">Horarios y precios</a></li>
-      <li><a href="profesores.html">Profesores y contacto</a></li>
-    </ul>
+    <ul class="nav-links" data-nav></ul>
   </nav>
 </header>
 
@@ -29,8 +39,8 @@
   <section class="hero" style="padding: 60px 0 72px;">
     <div class="contenedor">
       <span class="eyebrow">Agenda tu clase</span>
-      <h1 style="max-width: 20ch;">Horarios disponibles y <span class="correccion">packs</span> de clases</h1>
-      <p class="lead">Elige el horario que más te acomode y el pack de clases que se ajuste a tu ritmo de aprendizaje.</p>
+      <h1 style="max-width: 20ch;" data-bind-html="horarios.heroTituloHtml"></h1>
+      <p class="lead" data-bind="horarios.heroLead"></p>
     </div>
   </section>
 
@@ -39,8 +49,8 @@
     <div class="contenedor">
       <div class="seccion-cabecera reveal">
         <span class="eyebrow">Disponibilidad</span>
-        <h2>Horarios de clases</h2>
-        <p>Los cupos se confirman por profesor. Escríbenos para revisar disponibilidad exacta según el profesor elegido.</p>
+        <h2 data-bind="horarios.horarioIntroTitulo"></h2>
+        <p data-bind="horarios.horarioIntroTexto"></p>
       </div>
 
       <div class="reveal editar" style="overflow-x:auto; border:1px solid var(--papel-linea); border-radius: 10px; background: var(--papel);">
@@ -53,47 +63,10 @@
               <th style="text-align:left; padding:14px 18px; font-family: var(--fuente-nota); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--tinta-suave);">Noche</th>
             </tr>
           </thead>
-          <tbody>
-            <tr style="border-top:1px solid var(--papel-linea);">
-              <td style="padding:14px 18px; font-weight:600;">Lunes</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">09:00 – 12:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">15:00 – 18:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">19:00 – 21:00</td>
-            </tr>
-            <tr style="border-top:1px solid var(--papel-linea);">
-              <td style="padding:14px 18px; font-weight:600;">Martes</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">09:00 – 12:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">15:00 – 18:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">19:00 – 21:00</td>
-            </tr>
-            <tr style="border-top:1px solid var(--papel-linea);">
-              <td style="padding:14px 18px; font-weight:600;">Miércoles</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">09:00 – 12:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">15:00 – 18:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">19:00 – 21:00</td>
-            </tr>
-            <tr style="border-top:1px solid var(--papel-linea);">
-              <td style="padding:14px 18px; font-weight:600;">Jueves</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">09:00 – 12:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">15:00 – 18:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">19:00 – 21:00</td>
-            </tr>
-            <tr style="border-top:1px solid var(--papel-linea);">
-              <td style="padding:14px 18px; font-weight:600;">Viernes</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">09:00 – 12:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">15:00 – 18:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">—</td>
-            </tr>
-            <tr style="border-top:1px solid var(--papel-linea);">
-              <td style="padding:14px 18px; font-weight:600;">Sábado</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">10:00 – 13:00</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">—</td>
-              <td style="padding:14px 18px; color:var(--tinta-suave);">—</td>
-            </tr>
-          </tbody>
+          <tbody id="tabla-horarios-cuerpo"></tbody>
         </table>
       </div>
-      <p style="margin-top:14px; font-size:0.85rem; color:var(--tinta-suave);">Tabla de ejemplo — reemplázala por la disponibilidad real de cada profesor.</p>
+      <p style="margin-top:14px; font-size:0.85rem; color:var(--tinta-suave);" data-bind="horarios.horarioNota"></p>
     </div>
   </section>
 
@@ -102,30 +75,11 @@
     <div class="contenedor">
       <div class="seccion-cabecera reveal">
         <span class="eyebrow">Packs de clases</span>
-        <h2>Precios</h2>
-        <p>Los valores son por estudiante. Todos los packs incluyen material de apoyo y seguimiento de avance.</p>
+        <h2 data-bind="horarios.precioIntroTitulo"></h2>
+        <p data-bind="horarios.precioIntroTexto"></p>
       </div>
 
-      <div class="dos-columnas reveal editar" style="grid-template-columns: repeat(3, 1fr);">
-        <div class="tarjeta">
-          <span class="marca-tab">Pack Iniciación</span>
-          <h3>4 clases</h3>
-          <p style="font-family: var(--fuente-display); font-size:1.6rem; color:var(--tinta); margin: 10px 0 14px;">$ [precio]</p>
-          <p>Clases de 1 hora, ideal para probar la metodología o reforzar puntos específicos.</p>
-        </div>
-        <div class="tarjeta" style="border-color: var(--rojo-correccion);">
-          <span class="marca-tab">Pack Constancia</span>
-          <h3>8 clases</h3>
-          <p style="font-family: var(--fuente-display); font-size:1.6rem; color:var(--tinta); margin: 10px 0 14px;">$ [precio]</p>
-          <p>El pack más elegido. Frecuencia semanal y seguimiento de avance cada 4 clases.</p>
-        </div>
-        <div class="tarjeta">
-          <span class="marca-tab">Pack Intensivo</span>
-          <h3>12 clases</h3>
-          <p style="font-family: var(--fuente-display); font-size:1.6rem; color:var(--tinta); margin: 10px 0 14px;">$ [precio]</p>
-          <p>Pensado para preparar viajes, entrevistas o certificaciones en poco tiempo.</p>
-        </div>
-      </div>
+      <div class="dos-columnas reveal editar" id="packs-grid" style="grid-template-columns: repeat(3, 1fr);"></div>
     </div>
   </section>
 
@@ -133,8 +87,8 @@
     <div class="contenedor">
       <div class="cta-final reveal">
         <div>
-          <h2>¿Tienes dudas sobre horarios o precios?</h2>
-          <p>Escríbenos directamente y te ayudamos a elegir el pack y el profesor adecuado.</p>
+          <h2 data-bind="horarios.ctaTitulo"></h2>
+          <p data-bind="horarios.ctaTexto"></p>
         </div>
         <a href="profesores.html#contacto" class="boton boton-primario">Ir a contacto</a>
       </div>
@@ -146,17 +100,15 @@
 <footer class="pie">
   <div class="contenedor">
     <div class="pie-grid">
-      <span class="pie-marca">English With Us</span>
-      <ul class="pie-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="horarios.html">Horarios y precios</a></li>
-        <li><a href="profesores.html">Profesores y contacto</a></li>
-      </ul>
+      <span class="pie-marca" data-bind="sitio.nombre"></span>
+      <ul class="pie-links" data-nav></ul>
     </div>
-    <p class="pie-copy">© 2026 English With Us — Organización de profesores de inglés.</p>
+    <p class="pie-copy">© <span data-bind="sitio.anioCopyright"></span> <span data-bind="sitio.nombre"></span> — Organización de profesores de inglés.</p>
   </div>
 </footer>
 
+<script src="contenido.js"></script>
+<script src="render.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

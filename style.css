@@ -19,6 +19,7 @@
   --tinta-suave: #4B5A52;    /* texto secundario */
   --rojo-correccion: #C24429;/* rojo de corrección del profe */
   --amarillo-marcador: #E7B32B; /* resaltador */
+  --lila-lirio: #9C7FB5;     /* acento floral — lilium */
   --tiza: #F4F2EA;
 
   --fuente-display: 'Fraunces', serif;
@@ -90,18 +91,14 @@ a{ color: inherit; }
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 2px dashed var(--tinta-suave);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-family: var(--fuente-nota);
-  font-size: 9px;
-  text-align:center;
-  color: var(--tinta-suave);
   flex-shrink:0;
-  line-height:1.2;
-  background: var(--tiza);
+  background: var(--pizarron);
+  color: var(--lila-lirio);
 }
+.logo-hueco svg{ width: 26px; height: 26px; }
 
 .marca-nombre{
   font-family: var(--fuente-display);
@@ -118,6 +115,16 @@ a{ color: inherit; }
   color: var(--tinta-suave);
   text-transform: uppercase;
   font-weight: 500;
+}
+
+.marca-nombre > span:first-child{
+  display:block;
+  font-family: var(--fuente-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--tinta);
+  text-transform: none;
 }
 
 .nav-links{

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profesores y contacto — English With Us</title>
+<title>Profesores y contacto — Profesores_at.lilium</title>
 <meta name="description" content="Conoce a los profesores de inglés de la organización y encuentra nuestros datos de contacto.">
 <link rel="stylesheet" href="style.css">
 <style>
@@ -95,15 +95,25 @@
 <header class="encabezado">
   <nav class="nav contenedor">
     <a href="index.html" class="marca">
-      <div class="logo-hueco editar">LOGO<br>AQUÍ</div>
-      <div class="marca-nombre">English With Us<span>Profesores de inglés</span></div>
+      <div class="logo-hueco" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 44 L24 28"/>
+          <path d="M24 38 C20 38 17 35 16 32"/>
+          <path d="M24 28 C24 20 20 12 24 4 C28 12 24 20 24 28 Z"/>
+          <path d="M24 28 C30 22 38 18 44 20 C38 24 30 26 24 28 Z"/>
+          <path d="M24 28 C18 22 10 18 4 20 C10 24 18 26 24 28 Z"/>
+          <path d="M24 28 C29 21 34 13 32 6 C27 11 25 20 24 28 Z"/>
+          <path d="M24 28 C19 21 14 13 16 6 C21 11 23 20 24 28 Z"/>
+          <circle cx="24" cy="27" r="1.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <div class="marca-nombre">
+        <span data-bind="sitio.nombre"></span>
+        <span data-bind="sitio.tagline"></span>
+      </div>
     </a>
     <button class="nav-toggle" aria-label="Abrir menú"><span></span></button>
-    <ul class="nav-links">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="horarios.html">Horarios y precios</a></li>
-      <li><a href="profesores.html" class="activo">Profesores y contacto</a></li>
-    </ul>
+    <ul class="nav-links" data-nav></ul>
   </nav>
 </header>
 
@@ -112,8 +122,8 @@
   <section class="hero" style="padding: 60px 0 72px;">
     <div class="contenedor">
       <span class="eyebrow">El equipo</span>
-      <h1 style="max-width: 22ch;">Los profesores detrás de cada <span class="correccion">clase</span></h1>
-      <p class="lead">Cinco profesores forman hoy la organización. Cada uno con su propia especialidad, pero con el mismo compromiso con el avance del estudiante.</p>
+      <h1 style="max-width: 22ch;" data-bind-html="profesores.heroTituloHtml"></h1>
+      <p class="lead" data-bind="profesores.heroLead"></p>
     </div>
   </section>
 
@@ -122,58 +132,11 @@
     <div class="contenedor">
       <div class="seccion-cabecera reveal">
         <span class="eyebrow">Presentaciones</span>
-        <h2>Nuestros profesores</h2>
-        <p>Iremos sumando más presentaciones a medida que se integren nuevos profesores a la organización.</p>
+        <h2 data-bind="profesores.listaTitulo"></h2>
+        <p data-bind="profesores.listaTexto"></p>
       </div>
 
-      <div class="profesores-grid reveal editar">
-        <article class="profe-card">
-          <div class="profe-foto">FT</div>
-          <div class="profe-info">
-            <span class="marca-tab">Profesor 1</span>
-            <h3>[Nombre del profesor]</h3>
-            <p>[Especialidad: ej. conversación e inglés de negocios. Breve presentación de su experiencia y estilo de clase.]</p>
-          </div>
-        </article>
-
-        <article class="profe-card">
-          <div class="profe-foto">FT</div>
-          <div class="profe-info">
-            <span class="marca-tab">Profesor 2</span>
-            <h3>[Nombre del profesor]</h3>
-            <p>[Especialidad: ej. preparación de exámenes internacionales (TOEFL, IELTS). Breve presentación.]</p>
-          </div>
-        </article>
-
-        <article class="profe-card">
-          <div class="profe-foto">FT</div>
-          <div class="profe-info">
-            <span class="marca-tab">Profesor 3</span>
-            <h3>[Nombre del profesor]</h3>
-            <p>[Especialidad: ej. inglés para niños y jóvenes. Breve presentación de su enfoque pedagógico.]</p>
-          </div>
-        </article>
-
-        <article class="profe-card">
-          <div class="profe-foto">FT</div>
-          <div class="profe-info">
-            <span class="marca-tab">Profesor 4</span>
-            <h3>[Nombre del profesor]</h3>
-            <p>[Especialidad: ej. gramática y escritura académica. Breve presentación de su trayectoria.]</p>
-          </div>
-        </article>
-
-        <article class="profe-card">
-          <div class="profe-foto">FT</div>
-          <div class="profe-info">
-            <span class="marca-tab">Profesor 5</span>
-            <h3>[Nombre del profesor]</h3>
-            <p>[Especialidad: ej. inglés para viajes y uso cotidiano. Breve presentación de su estilo de clase.]</p>
-          </div>
-        </article>
-
-        <!-- Para sumar más profesores a futuro, copia una <article class="profe-card"> completa y edita sus datos. -->
-      </div>
+      <div class="profesores-grid reveal editar" id="profesores-grid"></div>
     </div>
   </section>
 
@@ -182,8 +145,8 @@
     <div class="contenedor">
       <div class="seccion-cabecera reveal">
         <span class="eyebrow">Hablemos</span>
-        <h2>Contacto</h2>
-        <p>Escríbenos por el medio que prefieras y te respondemos a la brevedad.</p>
+        <h2 data-bind="profesores.contactoTitulo"></h2>
+        <p data-bind="profesores.contactoTexto"></p>
       </div>
 
       <div class="contacto-grid reveal editar">
@@ -193,7 +156,7 @@
           </div>
           <div>
             <h3>Teléfono</h3>
-            <a href="tel:+56900000000">[+56 9 0000 0000]</a>
+            <a data-bind="sitio.telefonoTexto" id="link-telefono"></a>
           </div>
         </div>
 
@@ -203,7 +166,7 @@
           </div>
           <div>
             <h3>Correo</h3>
-            <a href="mailto:contacto@englishwithus.cl">[contacto@englishwithus.cl]</a>
+            <a data-bind="sitio.correo" id="link-correo"></a>
           </div>
         </div>
 
@@ -213,7 +176,7 @@
           </div>
           <div>
             <h3>Instagram</h3>
-            <a href="https://instagram.com/englishwithus" target="_blank" rel="noopener">[@englishwithus]</a>
+            <a data-bind="sitio.instagramTexto" data-bind-href="sitio.instagramUrl" target="_blank" rel="noopener"></a>
           </div>
         </div>
       </div>
@@ -225,17 +188,15 @@
 <footer class="pie">
   <div class="contenedor">
     <div class="pie-grid">
-      <span class="pie-marca">English With Us</span>
-      <ul class="pie-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="horarios.html">Horarios y precios</a></li>
-        <li><a href="profesores.html">Profesores y contacto</a></li>
-      </ul>
+      <span class="pie-marca" data-bind="sitio.nombre"></span>
+      <ul class="pie-links" data-nav></ul>
     </div>
-    <p class="pie-copy">© 2026 English With Us — Organización de profesores de inglés.</p>
+    <p class="pie-copy">© <span data-bind="sitio.anioCopyright"></span> <span data-bind="sitio.nombre"></span> — Organización de profesores de inglés.</p>
   </div>
 </footer>
 
+<script src="contenido.js"></script>
+<script src="render.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
