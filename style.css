@@ -1,0 +1,502 @@
+/* ============================================================
+   SISTEMA DE DISEÑO — "Cuaderno de corrección"
+   Idea: la organización enseña inglés corrigiendo con cariño.
+   El motivo visual recurrente es la marca del profesor en rojo
+   (como al corregir una prueba) sobre un fondo tipo cuaderno/
+   pizarrón. Evita paletas genéricas de IA (crema+terracota,
+   negro+neón, broadsheet).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Caveat:wght@600&display=swap');
+
+:root{
+  /* Paleta */
+  --pizarron: #1F3D33;       /* verde pizarrón profundo */
+  --pizarron-2: #16302A;     /* variante más oscura para profundidad */
+  --papel: #FAF9F3;          /* papel — blanco cálido, no crema */
+  --papel-linea: #E4E2D6;    /* línea de cuaderno sobre el papel */
+  --tinta: #1C2B24;          /* texto principal */
+  --tinta-suave: #4B5A52;    /* texto secundario */
+  --rojo-correccion: #C24429;/* rojo de corrección del profe */
+  --amarillo-marcador: #E7B32B; /* resaltador */
+  --tiza: #F4F2EA;
+
+  --fuente-display: 'Fraunces', serif;
+  --fuente-texto: 'Work Sans', sans-serif;
+  --fuente-nota: 'JetBrains Mono', monospace;
+  --fuente-manuscrita: 'Caveat', cursive;
+
+  --radio: 6px;
+  --sombra: 0 10px 30px rgba(22, 48, 42, 0.12);
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fuente-texto);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img{ max-width:100%; display:block; }
+
+a{ color: inherit; }
+
+.contenedor{
+  width: min(1080px, 92%);
+  margin-inline: auto;
+}
+
+/* ---------- Textura de papel cuadriculado en secciones claras ---------- */
+.papel-lineas{
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 38px,
+    var(--papel-linea) 39px
+  );
+}
+
+/* ---------- Encabezado / Navegación ---------- */
+.encabezado{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--papel);
+  border-bottom: 1px solid var(--papel-linea);
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.marca{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  text-decoration:none;
+  color: var(--tinta);
+}
+
+.logo-hueco{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px dashed var(--tinta-suave);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: var(--fuente-nota);
+  font-size: 9px;
+  text-align:center;
+  color: var(--tinta-suave);
+  flex-shrink:0;
+  line-height:1.2;
+  background: var(--tiza);
+}
+
+.marca-nombre{
+  font-family: var(--fuente-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.marca-nombre span{
+  display:block;
+  font-family: var(--fuente-nota);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  color: var(--tinta-suave);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.nav-links{
+  display:flex;
+  gap: 6px;
+  list-style:none;
+  margin:0; padding:0;
+  align-items:center;
+}
+
+.nav-links a{
+  text-decoration:none;
+  font-family: var(--fuente-nota);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: color .2s ease, background .2s ease;
+}
+
+.nav-links a:hover{ color: var(--tinta); background: var(--tiza); }
+
+.nav-links a.activo{
+  color: var(--pizarron);
+  background: #E7EDE6;
+}
+
+.nav-toggle{
+  display:none;
+  background:none;
+  border: 1px solid var(--papel-linea);
+  border-radius: var(--radio);
+  width: 40px; height: 40px;
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+}
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
+  content:"";
+  display:block;
+  width: 18px; height: 2px;
+  background: var(--tinta);
+  position:relative;
+  transition: all .2s ease;
+}
+.nav-toggle span::before{ position:absolute; top:-6px; }
+.nav-toggle span::after{ position:absolute; top:6px; }
+
+/* ---------- Botones ---------- */
+.boton{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family: var(--fuente-nota);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration:none;
+  padding: 13px 22px;
+  border-radius: var(--radio);
+  cursor:pointer;
+  border: 1.5px solid transparent;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.boton:hover{ transform: translateY(-2px); }
+
+.boton-primario{
+  background: var(--rojo-correccion);
+  color: var(--tiza);
+  box-shadow: var(--sombra);
+}
+.boton-secundario{
+  background: transparent;
+  color: var(--papel);
+  border-color: rgba(250,249,243,0.4);
+}
+.boton-terciario{
+  background: transparent;
+  color: var(--pizarron);
+  border-color: var(--pizarron);
+}
+
+/* ---------- Marca de corrección (elemento firma) ---------- */
+.correccion{
+  position:relative;
+  color: var(--rojo-correccion);
+  white-space: nowrap;
+}
+.correccion::after{
+  content:"";
+  position:absolute;
+  left:-2%; right:-2%; bottom:-0.06em;
+  height: 0.5em;
+  border-bottom: 2.5px solid var(--rojo-correccion);
+  border-radius: 50%;
+  transform: rotate(-1deg);
+  pointer-events:none;
+}
+.nota-manuscrita{
+  font-family: var(--fuente-manuscrita);
+  color: var(--rojo-correccion);
+  font-size: 1.4rem;
+  font-weight: 600;
+  display:inline-block;
+  transform: rotate(-4deg);
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(255,255,255,0.05), transparent 45%),
+    var(--pizarron);
+  background-color: var(--pizarron);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.06), transparent 50%),
+    linear-gradient(var(--pizarron-2), var(--pizarron));
+  background-size: 42px 42px, 42px 42px, cover, cover;
+  color: var(--tiza);
+  padding: 84px 0 96px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items:center;
+}
+
+.eyebrow{
+  font-family: var(--fuente-nota);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform:uppercase;
+  color: var(--amarillo-marcador);
+  margin-bottom: 18px;
+  display:inline-block;
+}
+
+.hero h1{
+  font-family: var(--fuente-display);
+  font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+  line-height: 1.12;
+  font-weight: 600;
+  margin: 0 0 22px;
+  letter-spacing: -0.01em;
+}
+
+.hero p.lead{
+  font-size: 1.06rem;
+  color: rgba(250,249,243,0.82);
+  max-width: 46ch;
+  margin: 0 0 32px;
+}
+
+.hero-acciones{
+  display:flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Tarjeta "prueba corregida" decorativa del hero */
+.prueba{
+  background: var(--papel);
+  color: var(--tinta);
+  border-radius: 10px;
+  padding: 28px 26px;
+  transform: rotate(2deg);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+  position:relative;
+}
+.prueba::before{
+  content: "10/10";
+  position:absolute;
+  top: -16px; right: -14px;
+  background: var(--rojo-correccion);
+  color: var(--tiza);
+  font-family: var(--fuente-manuscrita);
+  font-size: 1.9rem;
+  width: 74px; height: 74px;
+  border-radius: 50%;
+  display:flex; align-items:center; justify-content:center;
+  transform: rotate(8deg);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  border: 3px solid var(--tiza);
+}
+.prueba-linea{
+  font-family: var(--fuente-nota);
+  font-size: 0.78rem;
+  color: var(--tinta-suave);
+  border-bottom: 1px dashed var(--papel-linea);
+  padding: 9px 0;
+  display:flex;
+  justify-content: space-between;
+}
+.prueba-linea:last-child{ border-bottom:none; }
+.prueba-linea b{ color: var(--tinta); font-weight:600; }
+
+/* ---------- Secciones generales ---------- */
+.seccion{
+  padding: 84px 0;
+}
+.seccion-cabecera{
+  max-width: 62ch;
+  margin-bottom: 44px;
+}
+.seccion-cabecera .eyebrow{ color: var(--rojo-correccion); }
+.seccion-cabecera h2{
+  font-family: var(--fuente-display);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin: 0 0 14px;
+  color: var(--tinta);
+  font-weight: 600;
+}
+.seccion-cabecera p{
+  color: var(--tinta-suave);
+  font-size: 1.02rem;
+  margin:0;
+}
+
+.dos-columnas{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.parrafo-grande{
+  font-size: 1.06rem;
+  color: var(--tinta-suave);
+}
+.parrafo-grande p{ margin: 0 0 16px; }
+.parrafo-grande p:last-child{ margin-bottom:0; }
+
+/* Tarjetas Visión/Misión */
+.tarjeta{
+  background: var(--papel);
+  border: 1px solid var(--papel-linea);
+  border-radius: 10px;
+  padding: 30px 28px;
+  position:relative;
+}
+.tarjeta .marca-tab{
+  font-family: var(--fuente-nota);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform:uppercase;
+  color: var(--rojo-correccion);
+  display:block;
+  margin-bottom: 12px;
+}
+.tarjeta h3{
+  font-family: var(--fuente-display);
+  font-size: 1.35rem;
+  margin: 0 0 12px;
+}
+.tarjeta p{
+  color: var(--tinta-suave);
+  margin:0;
+}
+
+/* ---------- CTA de cierre (usado en varias páginas) ---------- */
+.cta-final{
+  background: var(--pizarron);
+  color: var(--tiza);
+  border-radius: 14px;
+  padding: 52px 44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 30px;
+  flex-wrap:wrap;
+}
+.cta-final h2{
+  font-family: var(--fuente-display);
+  font-size: 1.7rem;
+  margin: 0 0 8px;
+  font-weight:600;
+}
+.cta-final p{
+  margin:0;
+  color: rgba(250,249,243,0.78);
+}
+
+/* ---------- Footer ---------- */
+.pie{
+  background: var(--pizarron-2);
+  color: rgba(250,249,243,0.7);
+  padding: 46px 0 30px;
+  margin-top: 40px;
+}
+.pie-grid{
+  display:flex;
+  justify-content:space-between;
+  gap: 30px;
+  flex-wrap:wrap;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(250,249,243,0.12);
+}
+.pie-marca{
+  font-family: var(--fuente-display);
+  color: var(--tiza);
+  font-size: 1.1rem;
+}
+.pie-links{
+  list-style:none;
+  display:flex;
+  gap: 22px;
+  padding:0; margin:0;
+  font-family: var(--fuente-nota);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform:uppercase;
+}
+.pie-links a{ text-decoration:none; color: rgba(250,249,243,0.7); }
+.pie-links a:hover{ color: var(--tiza); }
+.pie-copy{
+  padding-top: 20px;
+  font-family: var(--fuente-nota);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  color: rgba(250,249,243,0.45);
+}
+
+/* ---------- Utilidades ---------- */
+.editar{
+  outline: 1.5px dashed rgba(194,68,41,0.5);
+  outline-offset: 4px;
+  position:relative;
+}
+.editar::before{
+  content: "EDITAR";
+  position:absolute;
+  top: -10px; left: 8px;
+  background: var(--rojo-correccion);
+  color: var(--tiza);
+  font-family: var(--fuente-nota);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{
+  opacity:0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible{ opacity:1; transform:none; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .boton:hover{ transform:none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 880px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .dos-columnas{ grid-template-columns: 1fr; }
+  .prueba{ transform:none; max-width: 380px; }
+}
+
+@media (max-width: 720px){
+  .nav-links{
+    position:absolute;
+    top: 100%; left:0; right:0;
+    background: var(--papel);
+    flex-direction:column;
+    align-items:stretch;
+    padding: 10px 5%;
+    border-bottom: 1px solid var(--papel-linea);
+    display:none;
+  }
+  .nav-links.abierto{ display:flex; }
+  .nav-links a{ text-align:center; }
+  .nav-toggle{ display:flex; }
+  .cta-final{ flex-direction:column; align-items:flex-start; }
+}
