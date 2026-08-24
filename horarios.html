@@ -38,7 +38,6 @@
 
   <section class="hero" style="padding: 60px 0 72px;">
     <div class="contenedor">
-      <span class="eyebrow">Agenda tu clase</span>
       <h1 style="max-width: 20ch;" data-bind-html="horarios.heroTituloHtml"></h1>
       <p class="lead" data-bind="horarios.heroLead"></p>
     </div>
@@ -48,19 +47,16 @@
   <section class="seccion papel-lineas">
     <div class="contenedor">
       <div class="seccion-cabecera reveal">
-        <span class="eyebrow">Disponibilidad</span>
         <h2 data-bind="horarios.horarioIntroTitulo"></h2>
         <p data-bind="horarios.horarioIntroTexto"></p>
       </div>
 
       <div class="reveal editar" style="overflow-x:auto; border:1px solid var(--papel-linea); border-radius: 10px; background: var(--papel);">
-        <table style="width:100%; border-collapse: collapse; min-width: 560px;">
+        <table style="width:100%; border-collapse: collapse; min-width: 360px;">
           <thead>
             <tr style="background:#F3EAF1;">
               <th style="text-align:left; padding:14px 18px; font-family: var(--fuente-nota); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--tinta-suave);">Día</th>
-              <th style="text-align:left; padding:14px 18px; font-family: var(--fuente-nota); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--tinta-suave);">Mañana</th>
-              <th style="text-align:left; padding:14px 18px; font-family: var(--fuente-nota); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--tinta-suave);">Tarde</th>
-              <th style="text-align:left; padding:14px 18px; font-family: var(--fuente-nota); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--tinta-suave);">Noche</th>
+              <th style="text-align:left; padding:14px 18px; font-family: var(--fuente-nota); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--tinta-suave);">Horario</th>
             </tr>
           </thead>
           <tbody id="tabla-horarios-cuerpo"></tbody>
@@ -74,12 +70,12 @@
   <section class="seccion" style="padding-top:0;">
     <div class="contenedor">
       <div class="seccion-cabecera reveal">
-        <span class="eyebrow">Packs de clases</span>
         <h2 data-bind="horarios.precioIntroTitulo"></h2>
         <p data-bind="horarios.precioIntroTexto"></p>
       </div>
 
-      <div class="dos-columnas reveal editar" id="packs-grid" style="grid-template-columns: repeat(3, 1fr);"></div>
+      <div class="dos-columnas reveal" id="packs-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));"></div>
+      <p style="margin-top:22px; font-size:0.92rem; color:var(--tinta-suave);" data-bind="horarios.packsNota"></p>
     </div>
   </section>
 

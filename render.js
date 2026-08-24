@@ -51,10 +51,7 @@
     if (valor !== undefined) el.setAttribute("href", valor);
   });
 
-  // -------- 2b. Links de contacto con prefijo (tel: / mailto:) --------
-  const linkTelefono = $("#link-telefono");
-  if (linkTelefono) linkTelefono.href = "tel:" + C.sitio.telefonoHref;
-
+  // -------- 2b. Link de contacto con prefijo (mailto:) --------
   const linkCorreo = $("#link-correo");
   if (linkCorreo) linkCorreo.href = "mailto:" + C.sitio.correo;
 
@@ -93,12 +90,10 @@
       tr.appendChild(crear("td", { texto: fila.dia, html: undefined }));
       tr.children[0].style.padding = "14px 18px";
       tr.children[0].style.fontWeight = "600";
-      [fila.manana, fila.tarde, fila.noche].forEach((valor) => {
-        const td = crear("td", { texto: valor });
-        td.style.padding = "14px 18px";
-        td.style.color = "var(--tinta-suave)";
-        tr.appendChild(td);
-      });
+      const tdHorario = crear("td", { texto: fila.horario });
+      tdHorario.style.padding = "14px 18px";
+      tdHorario.style.color = "var(--tinta-suave)";
+      tr.appendChild(tdHorario);
       tablaHorarios.appendChild(tr);
     });
   }

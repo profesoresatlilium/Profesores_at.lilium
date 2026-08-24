@@ -25,11 +25,10 @@ window.CONTENIDO = {
     anioCopyright: "2026",
 
     // Datos de contacto (se usan en la página de Profesores)
-    telefonoTexto: "+56 9 0000 0000",   // lo que se ve
-    telefonoHref: "+56900000000",        // formato para el link tel:
     correo: "contacto@profesoreslilium.cl",
     instagramTexto: "@profesores_at.lilium",
     instagramUrl: "https://instagram.com/profesores_at.lilium",
+    facebookTexto: "Próximamente",
   },
 
   // ------------------------------------------------------------
@@ -46,7 +45,6 @@ window.CONTENIDO = {
   // PÁGINA DE INICIO (index.html)
   // ------------------------------------------------------------
   inicio: {
-    heroEyebrow: "Clases particulares de inglés",
     // heroTituloHtml puede llevar la etiqueta <span class="correccion">...</span>
     // para subrayar una palabra en rojo, como en el resto del sitio.
     heroTituloHtml: 'Enseñamos inglés y lo <span class="correccion">corregimos</span> con cariño.',
@@ -60,7 +58,6 @@ window.CONTENIDO = {
       { etiqueta: "Corrección", valor: "Con contexto" },
     ],
 
-    quienesSomosEyebrow: "Quiénes somos",
     quienesSomosTitulo: "Una organización pensada para las clases particulares",
     quienesSomosParrafo1: "Somos Profesores_at.lilium: un grupo de estudiantes de pregrado de la Pontificia Universidad Católica de Valparaíso (PUCV) que decidimos unir nuestra formación como futuros profesores de inglés para ofrecer clases particulares con un estándar en común: cercanía, constancia y resultados medibles.",
     quienesSomosParrafo2: "Cada profesor de la organización mantiene su propio estilo, pero comparte la misma forma de trabajar: diagnóstico inicial, plan de clases y revisión periódica del avance.",
@@ -88,28 +85,33 @@ window.CONTENIDO = {
 
     horarioIntroTitulo: "Horarios de clases",
     horarioIntroTexto: "Los cupos se confirman por profesor. Escríbenos para revisar disponibilidad exacta según el profesor elegido.",
-    horarioNota: "Tabla de ejemplo — reemplaza estos horarios por la disponibilidad real de cada profesor.",
+    horarioNota: "Horario general de atención; los cupos varían según el profesor.",
 
     // Para agregar/quitar un día, solo agreguen o borren un bloque { ... } de esta lista.
     dias: [
-      { dia: "Lunes",     manana: "09:00 – 12:00", tarde: "15:00 – 18:00", noche: "19:00 – 21:00" },
-      { dia: "Martes",    manana: "09:00 – 12:00", tarde: "15:00 – 18:00", noche: "19:00 – 21:00" },
-      { dia: "Miércoles", manana: "09:00 – 12:00", tarde: "15:00 – 18:00", noche: "19:00 – 21:00" },
-      { dia: "Jueves",    manana: "09:00 – 12:00", tarde: "15:00 – 18:00", noche: "19:00 – 21:00" },
-      { dia: "Viernes",   manana: "09:00 – 12:00", tarde: "15:00 – 18:00", noche: "—" },
-      { dia: "Sábado",    manana: "10:00 – 13:00", tarde: "—",             noche: "—" },
+      { dia: "Lunes",     horario: "8:15 – 21:00" },
+      { dia: "Martes",    horario: "8:15 – 21:00" },
+      { dia: "Miércoles", horario: "8:15 – 21:00" },
+      { dia: "Jueves",    horario: "8:15 – 21:00" },
+      { dia: "Viernes",   horario: "8:15 – 21:00" },
+      { dia: "Sábado",    horario: "8:15 – 21:00" },
+      { dia: "Domingo",   horario: "8:15 – 21:00" },
     ],
 
     precioIntroTitulo: "Precios",
-    precioIntroTexto: "Los valores son por estudiante. Todos los packs incluyen material de apoyo y seguimiento de avance.",
+    precioIntroTexto: "Los valores son por estudiante. Los packs se miden en horas: 1 hora equivale a 1 clase.",
 
     // Para agregar/quitar un pack, solo agreguen o borren un bloque { ... } de esta lista.
-    // "destacado: true" le pone el borde rojo (úsenlo en el pack que más quieran recomendar).
+    // "destacado: true" le pone el borde rosa (úsenlo en el pack que más quieran recomendar).
     packs: [
-      { etiqueta: "Pack Iniciación", nombre: "4 clases",  precio: "[precio]", descripcion: "Clases de 1 hora, ideal para probar la metodología o reforzar puntos específicos." },
-      { etiqueta: "Pack Constancia", nombre: "8 clases",  precio: "[precio]", descripcion: "El pack más elegido. Frecuencia semanal y seguimiento de avance cada 4 clases.", destacado: true },
-      { etiqueta: "Pack Intensivo",  nombre: "12 clases", precio: "[precio]", descripcion: "Pensado para preparar viajes, entrevistas o certificaciones en poco tiempo." },
+      { etiqueta: "Clases particulares", nombre: "1 hora",  precio: "10.000", descripcion: "Ideal para probar la metodología o reforzar un tema puntual." },
+      { etiqueta: "Pack de clases 1", nombre: "8 horas", precio: "60.000", descripcion: "El pack con más horas y el mejor valor por hora.", destacado: true },
+      { etiqueta: "Pack de clases 2", nombre: "6 horas", precio: "50.000", descripcion: "Frecuencia semanal con seguimiento constante." },
+      { etiqueta: "Pack de clases 3", nombre: "5 horas", precio: "44.000", descripcion: "Buen equilibrio entre constancia y flexibilidad." },
+      { etiqueta: "Pack de clases 4", nombre: "4 horas", precio: "37.000", descripcion: "Para reforzar puntos específicos en poco tiempo." },
     ],
+    // Nota que aparece bajo los packs, para quienes quieran más horas de las que ofrecen los packs.
+    packsNota: "¿Necesitas más horas de clases? Escríbenos — el precio se revisa según el caso.",
 
     ctaTitulo: "¿Tienes dudas sobre horarios o precios?",
     ctaTexto: "Escríbenos directamente y te ayudamos a elegir el pack y el profesor adecuado.",
